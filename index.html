@@ -131,7 +131,7 @@ body {
 
 header {
   position: absolute;
-  top: 25px;
+  top: max(25px, env(safe-area-inset-top));
   width: 100%;
   text-align: center;
   z-index: 5;
@@ -241,7 +241,7 @@ h1 {
 
 .controls {
   position: absolute;
-  bottom: 20px;
+  bottom: max(20px, env(safe-area-inset-bottom));
   left: 0;
   right: 0;
   display: flex;
@@ -266,15 +266,15 @@ button:active {
 
 #count {
   position: absolute;
-  right: 16px;
-  bottom: 85px;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: calc(max(20px, env(safe-area-inset-bottom)) + 65px);
   color: #d7a8b9;
   font-family: inherit;
   font-size: 14px;
   pointer-events: none;
 }
 
-/* Keep the garden and its controls comfortable on short landscape screens. */
+/* Compact, safe-area-aware layout for short landscape screens. */
 @media (orientation: landscape) and (max-height: 500px) {
   header {
     top: max(8px, env(safe-area-inset-top));
@@ -301,8 +301,16 @@ button:active {
 
   #count {
     right: max(12px, env(safe-area-inset-right));
-    bottom: 56px;
+    bottom: calc(max(8px, env(safe-area-inset-bottom)) + 48px);
     font-size: 12px;
+  }
+}
+
+/* Give portrait flowers more room and keep planting below the heading. */
+@media (orientation: portrait) {
+  .flower {
+    width: 88px;
+    height: 167px;
   }
 }
 </style>
