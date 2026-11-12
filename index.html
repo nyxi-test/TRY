@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#210b18">
 <link rel="manifest" href="./manifest.webmanifest">
 <title>Your little garden :3</title>
@@ -272,6 +272,38 @@ button:active {
   font-family: inherit;
   font-size: 14px;
   pointer-events: none;
+}
+
+/* Keep the garden and its controls comfortable on short landscape screens. */
+@media (orientation: landscape) and (max-height: 500px) {
+  header {
+    top: max(8px, env(safe-area-inset-top));
+  }
+
+  h1 {
+    font-size: clamp(20px, 4vw, 28px);
+  }
+
+  .hint {
+    margin-top: 3px;
+    font-size: 10px;
+  }
+
+  .controls {
+    bottom: max(8px, env(safe-area-inset-bottom));
+    gap: 8px;
+  }
+
+  button {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  #count {
+    right: max(12px, env(safe-area-inset-right));
+    bottom: 56px;
+    font-size: 12px;
+  }
 }
 </style>
 </head>
@@ -791,4 +823,3 @@ if ("serviceWorker" in navigator) {
 
 </body>
 </html>
-
